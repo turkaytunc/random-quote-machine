@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { fakeData } from '../data/fakeData';
+import './quote-box.scss';
 
 export function QuoteBox() {
   const [q, setQ] = useState({
