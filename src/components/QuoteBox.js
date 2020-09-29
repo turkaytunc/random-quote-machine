@@ -1,24 +1,14 @@
 import React, { useState } from 'react';
-import { fakeData } from '../data/fakeData';
+import { getData } from '../data/getData';
+import { getNewQuote } from '../data/getNewQuote';
 import './quote-box.scss';
 
 export function QuoteBox() {
   const [q, setQ] = useState({
-    quote: '',
-    author: '',
+    quote:
+      'If a cluttered desk is a sign of a cluttered mind, of what, then, is an empty desk a sign?',
+    author: 'Albert Einstein',
   });
-  const [l, setL] = useState({ loading: true });
-
-  const getNewQuote = () => {
-    const rand = Math.floor(Math.random() * 6);
-    let newQ = fakeData[rand];
-    setQ({ ...q, quote: newQ.quote, author: newQ.author });
-  };
-
-  if (l.loading === true) {
-    getNewQuote();
-    setL({ ...l, loading: false });
-  }
 
   return (
     <div id="quote-box">
@@ -27,7 +17,7 @@ export function QuoteBox() {
       <button
         id="new-quote"
         onClick={() => {
-          getNewQuote();
+          getNewQuote(getData, setQ, q);
         }}
       >
         New quote
