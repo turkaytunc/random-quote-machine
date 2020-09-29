@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { fakeData } from '../data/fakeData';
+import './quote-box.scss';
 
 export function QuoteBox() {
   const [q, setQ] = useState({
@@ -29,7 +30,7 @@ export function QuoteBox() {
           getNewQuote();
         }}
       >
-        new quote
+        New quote
       </button>
     </div>
   );
