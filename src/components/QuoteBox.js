@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { fakeData } from '../data/fakeData';
 
-export function Box() {
+export function QuoteBox() {
   const [q, setQ] = useState({
     quote: 'hello',
     author: 'Albert Einstein',
   });
 
-  const getNewQuote = () => {};
+  const getNewQuote = () => {
+    const rand = Math.floor(Math.random() * 6);
+    let newQ = fakeData[rand];
+    setQ({ ...q, quote: newQ.quote, author: newQ.author });
+  };
+
+  useEffect(() => {
+    getNewQuote();
+  }, []);
 
   return (
     <div id="quote-box">
