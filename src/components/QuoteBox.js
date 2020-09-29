@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { fakeData } from '../data/fakeData';
 
 export function QuoteBox() {
   const [q, setQ] = useState({
-    quote: 'hello',
-    author: 'Albert Einstein',
+    quote: '',
+    author: '',
   });
+  const [l, setL] = useState({ loading: true });
 
   const getNewQuote = () => {
     const rand = Math.floor(Math.random() * 6);
@@ -13,9 +14,10 @@ export function QuoteBox() {
     setQ({ ...q, quote: newQ.quote, author: newQ.author });
   };
 
-  useEffect(() => {
+  if (l.loading === true) {
     getNewQuote();
-  }, []);
+    setL({ ...l, loading: false });
+  }
 
   return (
     <div id="quote-box">
@@ -29,9 +31,6 @@ export function QuoteBox() {
       >
         new quote
       </button>
-      <a id="tweet-quote" href="twitter.com/intent/tweet">
-        tweet
-      </a>
     </div>
   );
 }
