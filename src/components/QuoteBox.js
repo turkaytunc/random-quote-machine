@@ -30,7 +30,7 @@ export function QuoteBox() {
           getNewQuote();
         }}
       >
-        new quote
+        New quote
       </button>
     </div>
   );
